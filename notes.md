@@ -1,13 +1,11 @@
 # Checklist
 
-<!-- Make sure you fill out this checklist with what you've done before submitting! -->
-
-- [ ] Read the README [please please please]
+- [x] Read the README [please please please]
 - [ ] Something cool!
 - [ ] Back-end
   - [ ] Minimum Requirements
-    - [ ] Setup MongoDB database
-    - [ ] Setup item requests collection
+    - [x] Setup MongoDB database
+    - [x] Setup item requests collection
     - [ ] `PUT /api/request`
     - [ ] `GET /api/request?page=_`
   - [ ] Main Requirements
@@ -30,5 +28,4 @@
     - [ ] Batch deletes
 
 # Notes
-
-<!-- Notes go here -->
+- Used MongoDB built in `_id` for the `ID` Request field
