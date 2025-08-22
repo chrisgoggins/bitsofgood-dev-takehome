@@ -1,3 +1,5 @@
+import { RequestStatus } from "./request";
+
 export enum HTTP_STATUS_CODE {
   BAD_REQUEST = 400,
   OK = 200,
@@ -51,4 +53,21 @@ export const RESPONSES: Record<
     message: "Not found.",
     code: HTTP_STATUS_CODE.NOT_FOUND,
   },
+};
+
+export type RequestItem = {
+  _id: string;
+  requestorName: string;
+  itemRequested: string;
+  status: RequestStatus;
+  createdDate: string;     // ISO
+  lastEditedDate?: string; // ISO
+};
+
+export type PaginatedResponse = {
+  page: number;
+  pageSize: number;
+  total: number;
+  hasNext: boolean;
+  items: RequestItem[];
 };
