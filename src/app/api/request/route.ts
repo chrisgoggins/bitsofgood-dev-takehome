@@ -28,11 +28,13 @@ export async function GET(request: Request) {
       .limit(PAGINATION_PAGE_SIZE)
       .lean();
 
+    const total = await RequestModel.countDocuments(filter);
+
     return new Response(
       JSON.stringify({
         page,
         pageSize: PAGINATION_PAGE_SIZE,
-        total: items.length,
+        total,
         hasNext: page * PAGINATION_PAGE_SIZE < items.length,
         items,
       }),
