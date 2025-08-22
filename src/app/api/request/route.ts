@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { connectMongoose } from "@/lib/db/connection";
 import RequestModel from "@/lib/models/request";
 import { ServerResponseBuilder } from "@/lib/builders/serverResponseBuilder";
@@ -19,7 +17,7 @@ export async function GET(request: Request) {
       return new ServerResponseBuilder(ResponseType.INVALID_INPUT).build();
     }
 
-    const filter: Record<string, any> = {};
+    const filter: Record<string, string> = {};
     if (status) filter.status = status;
 
     const items = await RequestModel.find(filter)
@@ -73,11 +71,15 @@ export async function PATCH(request: Request) {
     const body = await request.json();
 
     // Batch editing
-    if (Array.isArray(body?.updates)) {
-      const ops = body.updates.map((u: any) => ({
+    if (Array.isArray(body?.ids)) {
+      if (!body.status) {
+        return new ServerResponseBuilder(ResponseType.INVALID_INPUT).build();
+      }
+
+      const ops = body.ids.map((id: string) => ({
         updateOne: {
-          filter: { _id: u.id },
-          update: { $set: { status: u.status } },
+          filter: { _id: id },
+          update: { $set: { status: body.status } },
         },
       }));
       const result = await RequestModel.bulkWrite(ops, { ordered: false });
