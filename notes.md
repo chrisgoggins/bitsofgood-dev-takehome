@@ -2,18 +2,18 @@
 
 - [x] Read the README [please please please]
 - [ ] Something cool!
-- [ ] Back-end
-  - [ ] Minimum Requirements
+- [x] Back-end
+  - [x] Minimum Requirements
     - [x] Setup MongoDB database
     - [x] Setup item requests collection
-    - [ ] `PUT /api/request`
-    - [ ] `GET /api/request?page=_`
-  - [ ] Main Requirements
-    - [ ] `GET /api/request?status=pending`
-    - [ ] `PATCH /api/request`
-  - [ ] Above and Beyond
-    - [ ] Batch edits
-    - [ ] Batch deletes
+    - [x] `PUT /api/request`
+    - [x] `GET /api/request?page=_`
+  - [x] Main Requirements
+    - [x] `GET /api/request?status=pending`
+    - [x] `PATCH /api/request`
+  - [x] Above and Beyond
+    - [x] Batch edits
+    - [x] Batch deletes
 - [ ] Front-end
   - [ ] Minimum Requirements
     - [ ] Dropdown component
